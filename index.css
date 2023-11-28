@@ -1,0 +1,32 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    margin: 15px;
+    border: 1px solid black;
+}
+.logo{
+    width: 100px;
+}
+.navList > ul{
+list-style-type: none;
+display: flex;
+
+}
+
+.navList > ul > li{
+    padding: 15px;
+}
+.card{
+    width: 200px;
+    border: 1px solid black;
+    padding: 10px;
+    margin: 10px;
+}
+.card > img{
+  width: 100%;
+}
+.restro-list{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
