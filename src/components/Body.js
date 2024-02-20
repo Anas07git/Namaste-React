@@ -12,7 +12,7 @@ const Body = () => {
     const [search, setSearch] = useState("")
     const [allrestaurant, setAllRestaurant] = useState([])
     const [filteredRestaurant, setFilteredRestaurant] = useState([])
-    console.log(filteredRestaurant)
+    // console.log(filteredRestaurant)
 
 
     useEffect(() => {
@@ -22,9 +22,9 @@ const Body = () => {
     async function fetchRestro() {
         const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.9710893&lng=72.8220707&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
         const jsonData = await data.json()
-        console.log(jsonData)
+        // console.log(jsonData)
 
-        res = jsonData?.data?.cards[1]?.card.card.gridElements.infoWithStyle.restaurants
+        res = jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
         setAllRestaurant(res)
         setFilteredRestaurant(res)
     }
