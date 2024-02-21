@@ -1,4 +1,13 @@
-export const IMG_CDN="https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"
+export const IMG_CDN="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fill/"
+export const ITEM_IMG_CDN="https://res.cloudinary.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_508,h_320,c_fit/"
+
+export const SWIGGY_RESTRO_CARD_API_URL="https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.9710893&lng=72.8220707&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+
+export const SWIGGY_MENU_API_URL="https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.9710893&lng=72.8220707&restaurantId="
+
+
+export const MENU_ITEM_TYPE_KEY = "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory";
+export const RESTAURANT_TYPE_KEY = "type.googleapis.com/swiggy.presentation.food.v2.Restaurant";
 
 export const restroList=[
     {

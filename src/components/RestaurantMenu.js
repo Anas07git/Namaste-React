@@ -1,29 +1,58 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { IMG_CDN } from '../constants'
+import { IMG_CDN, MENU_ITEM_TYPE_KEY, RESTAURANT_TYPE_KEY, SWIGGY_MENU_API_URL, SWIGGY_RESTRO_CARD_API_URL } from '../constants'
 
 const RestaurantMenu = () => {
-    const[restaurant,setRestaurant]=useState({})
-    const{id}=useParams()
-    useEffect(()=>{
-        getRestaurantMenu()
-    },[])
+  const{id}=useParams()
+  const[restaurant,setRestaurant]=useState(null)
+  const[menuItems,setMenuItems]=useState([])
 
-    async function getRestaurantMenu(){
-        const data = await fetch("https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=18.9710893&lng=72.8220707&restaurantId=24519&catalog_qa=undefined&submitAction=ENTER")
-        const jsonData= await data.json()
-        console.log(jsonData)
-        setRestaurant(jsonData?.data?.cards[2]?.card?.card?.info)
-    }
+  useEffect(()=>{
+    getRestaurantInfo()
+  },[])
+
+  async function getRestaurantInfo(){
+    try{
+    const menuApi= await fetch(SWIGGY_MENU_API_URL+id)
+    const json= await menuApi.json()
+
+    // Setting restaurant data
+ const restroData= json?.data?.cards?.map(x=>x.card)?.find(x => 
+                      x && x.card["@type"]===RESTAURANT_TYPE_KEY)?.card?.info || null  
+
+      setRestaurant(restroData)
+
+    // Setting Menu item data
+ const menuData= json?.data?.cards?.find(x=> x.groupedCard)?.
+                 groupedCard?.cardGroupMap?.REGULAR?.cards?.map(x=>x.card.card)?.
+                 filter(x=> x["@type"]===MENU_ITEM_TYPE_KEY)?.map(x=>x.itemCards)?.flat()?.map(x=>x.card.info) || null
+  
+
+       const uniqueMenuItems=[]
+
+       menuData.forEach((item)=>{
+        if(!uniqueMenuItems.find(x=> x.id===item.id)){
+           uniqueMenuItems.push(item)
+        }
+       })
+       setMenuItems(uniqueMenuItems)
+
+     console.log(uniqueMenuItems)
+      
+  }
+  catch(err){
+    setMenuItems([])
+    setRestaurant(null)
+    console.log(err)
+  }
+} 
+
+ 
+  
   return (
-    <div className='menu'>
-      <h2>Restaurant {id}</h2>
-      <h2> {restaurant.name}</h2>
-       <h2>{restaurant.areaName} </h2>
-       <h2>{restaurant.city} </h2>
-       <img src={IMG_CDN+restaurant.cloudinaryImageId}/>
-       <h2>{restaurant.costForTwoMessage}</h2>
-    </div>
+   <div>
+
+   </div>
   )
 }
 

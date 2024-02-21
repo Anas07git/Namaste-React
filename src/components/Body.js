@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { restroList } from "../constants"
+import { SWIGGY_RESTRO_CARD_API_URL, restroList } from "../constants"
 import { RestroCard } from "./RestroCard"
 import ShimmerUI from "./ShimmerUI"
 
@@ -20,11 +20,11 @@ const Body = () => {
     }, [])
 
     async function fetchRestro() {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=18.9710893&lng=72.8220707&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+        const data = await fetch(SWIGGY_RESTRO_CARD_API_URL)
         const jsonData = await data.json()
         // console.log(jsonData)
 
-        res = jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+        const res = jsonData?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
         setAllRestaurant(res)
         setFilteredRestaurant(res)
     }
