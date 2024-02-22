@@ -41,3 +41,46 @@ display: flex;
 .menu{
     display: flex;
 }
+
+
+
+.restro-image{
+    width: 150px;
+    height: 120px;
+}
+.restaurant-summary-details{
+    display: flex;
+    flex-direction: column;
+    flex-basis: 520px;
+    margin: 20px;
+}
+
+.menu-items-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    max-height: 250px;
+    padding: 20px;
+    border-bottom: rgba(40, 44, 63, 0.45) 0.5px solid;
+  }
+
+  .menu-img-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    width: 200px;
+    overflow: hidden;
+  }
+
+  .menu-item-img {
+    height: 100px;
+    width: 100px;
+    border-radius: 5px;
+  }
+
