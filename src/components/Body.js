@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { SWIGGY_RESTRO_CARD_API_URL, restroList } from "../constants"
 import { RestroCard } from "./RestroCard"
 import ShimmerUI from "./ShimmerUI"
+import { Link } from "react-router-dom"
 
 function filterResto(searchVal, restaurants) {
     return restaurants.filter((restaurant) => restaurant.info.name.toLowerCase().includes(searchVal.toLowerCase()))
@@ -74,7 +75,13 @@ const Body = () => {
 
                     {
                         filteredRestaurant.map((resto) => {
-                            return <RestroCard key={resto?.info?.id} {...resto?.info} />
+
+                            return( 
+                            <Link to={"/restaurant/"+resto?.info?.id} key={resto?.info?.id}>
+                            <RestroCard  {...resto?.info} />
+                            </Link>
+
+                            )
                         })
                     }
                 </div>)
