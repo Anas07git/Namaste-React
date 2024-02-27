@@ -12,8 +12,9 @@ function filterResto(searchVal, restaurants) {
 const Body = () => {
     const [search, setSearch] = useState("")
     const [allrestaurant, setAllRestaurant] = useState([])
-    const [filteredRestaurant, setFilteredRestaurant] = useState([])
+     const [filteredRestaurant, setFilteredRestaurant] = useState([])
     // console.log(filteredRestaurant)
+    
 
 
     useEffect(() => {
@@ -77,9 +78,9 @@ const Body = () => {
                         filteredRestaurant.map((resto) => {
 
                             return( 
-                            <Link to={"/restaurant/"+resto?.info?.id} key={resto?.info?.id}>
-                            <RestroCard  {...resto?.info} />
-                            </Link>
+                            <RestroCard  {...resto?.info} key={resto?.info?.id} />
+                            // <Link to={"/restaurant/"+resto?.info?.id} key={resto?.info?.id}>
+                            // </Link>
 
                             )
                         })
