@@ -1,22 +1,18 @@
 import { useEffect, useState } from "react"
-import { SWIGGY_RESTRO_CARD_API_URL, restroList } from "../constants"
+import { SWIGGY_RESTRO_CARD_API_URL} from "../constants"
 import { RestroCard } from "./RestroCard"
 import ShimmerUI from "./ShimmerUI"
-import { Link } from "react-router-dom"
-
-function filterResto(searchVal, restaurants) {
-    return restaurants.filter((restaurant) => restaurant.info.name.toLowerCase().includes(searchVal.toLowerCase()))
-}
+import filterResto from "../utils/Helper"
+import useOnline from "../hooks/useOnline"
 
 
 const Body = () => {
     const [search, setSearch] = useState("")
     const [allrestaurant, setAllRestaurant] = useState([])
-     const [filteredRestaurant, setFilteredRestaurant] = useState([])
+    const [filteredRestaurant, setFilteredRestaurant] = useState([])
+    const isOnline= useOnline()
     // console.log(filteredRestaurant)
     
-
-
     useEffect(() => {
         fetchRestro()
     }, [])
@@ -32,6 +28,10 @@ const Body = () => {
     }
 
 
+
+     if(!isOnline){
+        return <h1>Oops,Please check your internet connection </h1>
+     }
 
     // Donot render any Component (Early return)
     if (!allrestaurant) return null

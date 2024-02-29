@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDom from "react-dom/client"
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -29,6 +29,7 @@ import RestaurantMenu from "./components/RestaurantMenu";
 
  
 */
+const LazyCart= lazy(()=> import("./components/Cart"))
 
 const AppLayout=()=> (
     <>
@@ -59,6 +60,12 @@ const appRouter= createBrowserRouter([
       {
         path:"/restaurant/:id",
         element:<RestaurantMenu/>
+      },
+      {
+        path:"/cart",
+        element: <Suspense fallback="Loading.......">
+                 <LazyCart/>
+                 </Suspense>
       }
     ]
   },
