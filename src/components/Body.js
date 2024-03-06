@@ -42,17 +42,17 @@ const Body = () => {
 
     return (
         <>
-            <div className="search-bar">
+            <div className="p-4 my-4 flex justify-center items-center w-full ">
 
-                <input type="text" className="search-input"
-                    placeholder="Search"
+                <input type="text" className="rounded-md w-64 p-1.5 m-1.5 focus:bg-orange-50 placeholder:text-gray-600 border-solid border-2 border-black shadow-lg focus:rin "
+                    placeholder=" Search Restaurants..."
                     value={search}
                     onChange={(e) => setSearch(e.target.value)} />
 
-                <button className="search-btn"
+                <button className="p-1.5 m-1.5 bg-orange-300 rounded-md hover:bg-orange-400"
                     onClick={() => {
                         const data = filterResto(search, allrestaurant)
-                        setFilteredRestaurant(data)
+                        setFilteredRestaurant(data) 
                     }}
                 >
                     Search
@@ -62,7 +62,7 @@ const Body = () => {
             {(allrestaurant?.length === 0) ? <ShimmerUI /> :
 
 
-                (<div className="restro-list">
+                (<div className="flex flex-wrap justify-center self-stretch">
                     {/* <RestroCard restro={restroList[0].data}/>
            <RestroCard restro={restroList[1].data}/>
            <RestroCard restro={restroList[2].data}/>
