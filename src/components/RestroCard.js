@@ -17,9 +17,7 @@ export const RestroCard = ({
         src={IMG_CDN + cloudinaryImageId}
         className="w-full rounded-md"
       />
-      <Link to={"/restaurant/" + id}>
         <h2 className="text-xl font-medium">{name}</h2>
-      </Link>
       <h3>{cuisines.join(", ")}</h3>
 
       <span className="flex justify-between mt-2 text-center items-center">

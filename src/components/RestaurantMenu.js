@@ -12,51 +12,7 @@ const RestaurantMenu = () => {
  
   
   return (!restaurant)?(<ShimmerUI/>):(
-   <>
-      {/* <div className='restaurant-summary-details'>
-        <img className='restro-image' src={IMG_CDN+restaurant?.cloudinaryImageId} alt={restaurant?.name}/>
-         <h2>{restaurant?.name}</h2>
-         <p> {restaurant?.cuisines.join(", ")}</p>
-         <h3>{restaurant?.avgRating} Stars </h3>
-         <h4>Approx Time : {restaurant?.sla?.slaString}</h4>
-      </div>
-
-      <div className='menu-items-list' >
-
-        <h4>MENU LIST:</h4>
-        
-        {
-          menuItems.map((item)=>(
-             <div key={item.id} className='menu-item'>
-               
-               <h3>{item.name}</h3>
-               <p>
-                {
-                   item?.price > 0
-                    ? new Intl.NumberFormat("en-IN", {
-                        style: "currency",
-                        currency: "INR",
-                      }).format(item?.price / 100)
-                    : " "
-                }
-               </p>
-               <p>{item.description}</p>
-               <div className="menu-img-wrapper">
-                  {item?.imageId && (
-                    <img
-                      className="menu-item-img"
-                      src={ITEM_IMG_CDN + item?.imageId}
-                      alt={item?.name}
-                    />
-                  )}
-                  <button className="add-btn"> ADD +</button>
-                </div>
-              </div>
-          ))
-        }
-
-      </div> */}
-      <div className='mt-20 min-h-[80vh] w-auto	'>
+      <div className=' min-h-[80vh] w-auto	'>
 
         {/* Restaurant Summary */}
 
@@ -85,7 +41,13 @@ const RestaurantMenu = () => {
         </h4>
             
             <div className="restaurant-rating-slash">|</div>
-            <div>{restaurant?.sla?.slaString}</div>
+            <div className='flex '>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+  <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+</svg>
+
+              {restaurant?.sla?.slaString || "15-20 MINS"}
+              </div>
             <div className="restaurant-rating-slash">|</div>
             <div>{restaurant?.costForTwoMessage}</div>
             </div>
@@ -100,7 +62,7 @@ const RestaurantMenu = () => {
             <p className='mt-2 text-lg font-bold leading-snug	'>{menuItems.length} Items</p>
 
              {/* Menu Items List */}
-            <div className='flex flex-col justify-center divide-y divide-gray-700'>
+            <div className='flex flex-col justify-center divide-y divide-gray-500'>
              {
               menuItems.map((item) =>(
                 <div className='flex justify-between p-5 ' key={item.id}> 
@@ -129,7 +91,7 @@ const RestaurantMenu = () => {
                      alt={item?.name}
                      />
                      )}
-                  <button className="mt-[10px] rounded  py-2 px-6 bg-orange-800 text-white border-black "> ADD +</button>
+                  <button className="mt-[10px] rounded  py-2 px-6 bg-orange-800 text-white border-black hover:bg-orange-600 "> ADD +</button>
                    </div>
 
                 </div>
@@ -141,7 +103,7 @@ const RestaurantMenu = () => {
           </div>
         </div>
       </div>
-   </>
+   
   )
 }
 

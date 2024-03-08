@@ -4,6 +4,7 @@ import { RestroCard } from "./RestroCard"
 import ShimmerUI from "./ShimmerUI"
 import filterResto from "../utils/Helper"
 import useOnline from "../hooks/useOnline"
+import { Link } from "react-router-dom"
 
 
 const Body = () => {
@@ -59,10 +60,10 @@ const Body = () => {
                 </button>
 
             </div>
-            {(allrestaurant?.length === 0) ? <ShimmerUI /> :
+            {(allrestaurant?.length === 0 || filterResto.length===0) ? <ShimmerUI /> :
 
 
-                (<div className="flex flex-wrap justify-center self-stretch">
+                (<div className="w-auto flex flex-wrap items-center justify-center self-stretch">
                     {/* <RestroCard restro={restroList[0].data}/>
            <RestroCard restro={restroList[1].data}/>
            <RestroCard restro={restroList[2].data}/>
@@ -78,9 +79,10 @@ const Body = () => {
                         filteredRestaurant.map((resto) => {
 
                             return( 
-                            <RestroCard  {...resto?.info} key={resto?.info?.id} />
-                            // <Link to={"/restaurant/"+resto?.info?.id} key={resto?.info?.id}>
-                            // </Link>
+                                
+                                <Link to={"/restaurant/"+resto?.info?.id} key={resto?.info?.id}>
+                                <RestroCard  {...resto?.info}  />
+                            </Link>
 
                             )
                         })
