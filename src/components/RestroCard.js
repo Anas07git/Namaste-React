@@ -8,20 +8,22 @@ export const RestroCard = ({
   cuisines,
   sla,
   costForTwo,
+  areaName
 }) => {
   // const{id,name,img,rating,cuisines}=restro
   return (
-    <div className="w-72 p-3 m-4 border-solid border-2 border-black  shadow-xl bg-orange-50 hover:scale-125 rounded-lg">
+    <div className="w-64 p-3 m-4 border-solid border-2 border-black  shadow-xl bg-orange-50 hover:scale-125 rounded-lg">
       <img
         alt="card"
-        src={IMG_CDN + cloudinaryImageId}
+        src={IMG_CDN + cloudinaryImageId }
         className="w-full rounded-md"
       />
-        <h2 className="text-xl font-medium">{name}</h2>
-      <h3>{cuisines.join(", ")}</h3>
+        <h2 className="text-xl font-semibold overflow-x-hidden h-7 no-scrollbar">{name}</h2>
+      <h3 className="overflow-y-scroll h-7 no-scrollbar">{cuisines.join(", ")}</h3>
+      <h3 className="font-light text-lg h-7 overflow-y-hidden no-scrollbar">{areaName}</h3>
 
       <span className="flex justify-between mt-2 text-center items-center">
-        <h4 className="text-lg font-medium mt-2.5 pr-0.5 flex items-center rounded-md p-1">
+        <h4 className="text-base font-semibold mt-2.5 pr-0.5 flex items-center rounded-md p-1">
           <svg
             class="w-4 h-4 text-yellow-600 me-1"
             aria-hidden="true"
@@ -34,11 +36,11 @@ export const RestroCard = ({
           {avgRating}
         </h4>
         <h4 className="text-lg font-medium   mt-2.5 pr-0.5">•</h4>
-        <h4 className="text-lg font-medium   mt-2.5 pr-0.5">
+        <h4 className="text-base font-semibold   mt-2.5 pr-0.5">
           {sla?.lastMileTravelString ?? "2.0 km"}
         </h4>
         <h4 className="text-lg font-medium   mt-2.5 pr-0.5">•</h4>
-        <h4 className="text-lg font-medium   mt-2.5 pr-0.5">
+        <h4 className="text-base font-semibold   mt-2.5 pr-0.5">
           {costForTwo ?? "₹200 for two"}
         </h4>
       </span>

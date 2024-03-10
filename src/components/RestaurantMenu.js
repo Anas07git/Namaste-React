@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { IMG_CDN, ITEM_IMG_CDN, MENU_ITEM_TYPE_KEY, RESTAURANT_TYPE_KEY, SWIGGY_MENU_API_URL, SWIGGY_RESTRO_CARD_API_URL } from '../constants'
-import ShimmerUI from './ShimmerUI'
+import ShimmerUI, { MenuShimmmer } from './ShimmerUI'
 import useRestaurantMenu from '../hooks/useRestaurantMenu'
 
 const RestaurantMenu = () => {
@@ -11,7 +11,7 @@ const RestaurantMenu = () => {
 
  
   
-  return (!restaurant)?(<ShimmerUI/>):(
+  return (!restaurant)?(<MenuShimmmer/>):(
       <div className=' min-h-[80vh] w-auto	'>
 
         {/* Restaurant Summary */}
